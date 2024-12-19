@@ -33,7 +33,7 @@ export default function ApplyModal({ isOpen, onClose, onSubmit, handleApplyClick
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 h-screen">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 h-screen px-5">
       <div className="bg-white p-4 rounded-lg shadow-lg w-full max-w-lg">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">Apply Now</h2>         

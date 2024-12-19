@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
 import { useParams } from "next/navigation";
 import mockJobs from "../../data/mockJobs"; 
 import { useFavorites } from "../../context/FavouritesContext"; 
 import { useAppliedJobs } from "../../context/AppliedJobsContext"; 
-import { Star } from 'lucide-react';
-import Tooltip from '@mui/material/Tooltip';
-import ApplyModal from "../../components/ApplyModal"
+import { Star } from "lucide-react";
+import Tooltip from "@mui/material/Tooltip";
+import ApplyModal from "../../components/ApplyModal";
 import { useState } from "react";
 
 export default function JobDetailPage() {
@@ -26,8 +26,8 @@ export default function JobDetailPage() {
   };
 
   const handleApplyClick = () => {
-    addAppliedJob(job)
-  }
+    addAppliedJob(job);
+  };
 
   const toggleModal = (job) => {
     setSelectedJob(job);
@@ -39,39 +39,40 @@ export default function JobDetailPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white rounded-lg">
-      <div className="flex items-center">
-        <h1 className="text-3xl font-semibold text-gray-900 my-6">{job.title}</h1>
+    <div className="max-w-3xl mx-auto bg-white rounded-lg p-4 sm:p-6">
+      <div className="flex flex-row sm:items-center justify-between">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 my-4 sm:my-6">{job.title}</h1>
         <button
-            onClick={handleFavoriteClick}
-            className="flex items-center ml-4"
-          >
-            <Tooltip 
-              title={isFavorite(job.id) ? "Remove from Favourites" : "Add to Favourites"} 
-              placement="right"
-              slotProps={{
-                popper: {
-                  modifiers: [
-                    {
-                      name: 'offset',
-                      options: {
-                        offset: [0, -8],
-                      },
+          onClick={handleFavoriteClick}
+          className="flex items-center ml-0 sm:ml-4"
+        >
+          <Tooltip 
+            title={isFavorite(job.id) ? "Remove from Favourites" : "Add to Favourites"} 
+            placement="right"
+            slotProps={{
+              popper: {
+                modifiers: [
+                  {
+                    name: "offset",
+                    options: {
+                      offset: [0, -8],
                     },
-                  ],
-                },
-              }}>
-                <Star
-                  color="#efbf04"
-                  strokeWidth={1.75}
-                  fill={isFavorite(job.id) ? "#efbf04" : "none"}
-                  size={32}
-                />
-            </Tooltip>
-          </button>       
-      </div>     
-      
-      <div className="space-y-2 mb-4">
+                  },
+                ],
+              },
+            }}
+          >
+            <Star
+              color="#efbf04"
+              strokeWidth={1.75}
+              fill={isFavorite(job.id) ? "#efbf04" : "none"}
+              size={32}
+            />
+          </Tooltip>
+        </button>
+      </div>
+
+      <div className="space-y-4 sm:space-y-2 mb-4">
         <DetailItem label="Company" value={job.company} />
         <DetailItem label="Location" value={job.location} />
         <DetailItem label="Level" value={job.level} />
@@ -79,43 +80,44 @@ export default function JobDetailPage() {
       </div>
 
       <Section title="Job Description">
-        <p>{job.jobDescription}</p>
+        <p className="text-sm sm:text-base">{job.jobDescription}</p>
       </Section>
 
       <Section title="Salary Range">
-        <p>{job.salaryRange}</p>
+        <p className="text-sm sm:text-base">{job.salaryRange}</p>
       </Section>
 
-      {!isAppliedJob(job.id)? (
-      <button 
-      className="py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-      onClick={() => toggleModal(job)}
-      >
-        Apply Now
-      </button> ) : 
-      ( <p className="text-green-600">Application Submitted!</p> )
-      }
-        <ApplyModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          jobTitle={selectedJob?.title}
-          onSubmit={handleFormSubmit}
-          handleApplyClick={handleApplyClick}
-        />
+      {!isAppliedJob(job.id) ? (
+        <button
+          className="w-full sm:w-auto py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm sm:text-base"
+          onClick={() => toggleModal(job)}
+        >
+          Apply Now
+        </button>
+      ) : (
+        <p className="text-green-600 text-center sm:text-left">Application Submitted!</p>
+      )}
+      <ApplyModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        jobTitle={selectedJob?.title}
+        onSubmit={handleFormSubmit}
+        handleApplyClick={handleApplyClick}
+      />
     </div>
   );
 }
 
 const DetailItem = ({ label, value }) => (
-  <div className="flex items-center space-x-4 text-gray-700">
+  <div className="flex items-center space-y-1 space-x-2 sm:space-y-0 sm:space-x-4 text-gray-700">
     <span className="font-medium">{label}:</span>
-    <p>{value}</p>
+    <span className="text-sm m-0">{value}</span>
   </div>
 );
 
 const Section = ({ title, children }) => (
   <div className="space-y-2 text-gray-700 mb-4">
-    <h2 className="text-xl font-semibold">{title}</h2>
+    <h2 className="text-lg sm:text-xl font-semibold">{title}</h2>
     {children}
   </div>
 );

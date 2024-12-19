@@ -2,7 +2,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import { useFavorites } from "../context/FavouritesContext"; 
 import Tooltip from '@mui/material/Tooltip';
-import { Star, MapPin, Clock, Briefcase } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 export default function JobCard({ job }) {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
@@ -12,7 +12,7 @@ export default function JobCard({ job }) {
   };
   
   return (
-    <li className="mb-4 sm:mb-8 p-4 sm:py-2 hover:bg-gray-50 border rounded-lg sm:rounded-none sm:border-none">
+    <li className="my-4 sm:mb-8 pb-2 hover:bg-gray-50 border-b">
       <div className="flex flex-col sm:flex-row sm:items-center">
         <div className="flex items-start sm:items-center mb-3 sm:mb-0">
           <div className="hidden sm:block">
@@ -20,28 +20,35 @@ export default function JobCard({ job }) {
           </div>
           
           <Link href={`/job/${job.id}`} className="flex-grow">
-            <div className="sm:w-64 ml-0 sm:ml-2">
-              <h3 className="font-semibold text-lg">{job.title}</h3>
-              <p className="text-gray-500">{job.company}</p>
-            </div>
-          </Link>
+              <div className="sm:w-64 ml-0 sm:ml-2 flex flex-row">
+                <div className="sm:hidden">
+                  <Logo companyName={job.company} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg">{job.title}</h3>
+                  <p className="text-gray-500">{job.company}</p>
+                </div>
+              </div>
+            </Link>
         </div>
 
         {/* Mobile View Tags */}
-        <div className="flex flex-wrap gap-2 mb-3 sm:hidden">
-          <span className="bg-gray-200 px-2 py-1 rounded-lg text-sm flex items-center">
-            {job.level}
-          </span>
-          <span className="bg-gray-200 px-2 py-1 rounded-lg text-sm flex items-center">
-            {job.time}
-          </span>
+        <div className="flex flex-col flex-wrap gap-2 mb-3 sm:hidden">
+          <div className="flex gap-2">
+            <span className="bg-gray-200 px-2 py-1 rounded-lg text-sm flex items-center">
+              {job.level}
+            </span>
+            <span className="bg-gray-200 px-2 py-1 rounded-lg text-sm flex items-center">
+              {job.time}
+            </span>
+          </div>          
           <span className="font-semibold">
             {job.location}
           </span>
         </div>
 
         {/* Desktop View Info */}
-        <div className="hidden sm:flex items-center flex-grow">
+        <div className="hidden sm:flex items-center flex-grow ">
           <p className="w-28">
             <span className="bg-gray-200 px-2 py-1 rounded-lg inline-block">
               {job.level}

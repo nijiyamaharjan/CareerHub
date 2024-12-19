@@ -22,7 +22,7 @@ export default function JobFilters({
   };
 
   return (
-    <div className="p-4 sm:mt-4 sm:ml-8 sm:pr-8 bg-white border-r sm:min-w-[240px]">
+    <div className="p-4 sm:mt-4 sm:ml-8 sm:pr-8 bg-white sm:border-r sm:min-w-[240px]">
       <div className="flex justify-between items-center mb-4">
         <p className="text-lg sm:text-xl font-bold">Filter</p>
         {(jobLevel || jobType) && (
@@ -36,8 +36,8 @@ export default function JobFilters({
       </div>
 
       <div className="mb-6">
-        <h3 className="text-base sm:text-lg font-semibold mb-3">Job Level</h3>
-        <div className="space-y-3">
+        <h3 className="flex text-base sm:text-lg font-semibold mb-3">Job Level</h3>
+        <div className="flex gap-5 sm:flex-col">
           <label className="flex items-center hover:cursor-pointer">
             <input
               type="radio"
@@ -45,7 +45,7 @@ export default function JobFilters({
               value="entry level"
               checked={jobLevel === "entry level"}
               onChange={handleJobLevelChange}
-              className="w-4 h-4 text-blue-600 mr-3"
+              className="w-4 h-4 text-blue-600 mr-1"
             />
             <span className="text-sm sm:text-base">Entry Level</span>
           </label>
@@ -56,7 +56,7 @@ export default function JobFilters({
               value="mid level"
               checked={jobLevel === "mid level"}
               onChange={handleJobLevelChange}
-              className="w-4 h-4 text-blue-600 mr-3"
+              className="w-4 h-4 text-blue-600 mr-1"
             />
             <span className="text-sm sm:text-base">Mid Level</span>
           </label>
@@ -67,7 +67,7 @@ export default function JobFilters({
               value="senior level"
               checked={jobLevel === "senior level"}
               onChange={handleJobLevelChange}
-              className="w-4 h-4 text-blue-600 mr-3"
+              className="w-4 h-4 text-blue-600 mr-1"
             />
             <span className="text-sm sm:text-base">Senior Level</span>
           </label>
@@ -76,7 +76,7 @@ export default function JobFilters({
 
       <div className="mb-6">
         <h3 className="text-base sm:text-lg font-semibold mb-3">Job Type</h3>
-        <div className="space-y-3">
+        <div className="flex gap-5 sm:flex-col">
           <label className="flex items-center hover:cursor-pointer">
             <input
               type="radio"
@@ -84,7 +84,7 @@ export default function JobFilters({
               value="part-time"
               checked={jobType === "part-time"}
               onChange={handleJobTypeChange}
-              className="w-4 h-4 text-blue-600 mr-3"
+              className="w-4 h-4 text-blue-600 mr-1"
             />
             <span className="text-sm sm:text-base">Part-Time</span>
           </label>
@@ -95,7 +95,7 @@ export default function JobFilters({
               value="full-time"
               checked={jobType === "full-time"}
               onChange={handleJobTypeChange}
-              className="w-4 h-4 text-blue-600 mr-3"
+              className="w-4 h-4 text-blue-600 mr-1"
             />
             <span className="text-sm sm:text-base">Full-Time</span>
           </label>
