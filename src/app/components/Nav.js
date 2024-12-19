@@ -8,7 +8,7 @@ const Nav = () => {
         <div className="flex flex-wrap justify-between items-center h-16">
           <div>
             <Link
-              href="/"
+              href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/`}
               className="inline-flex items-center gap-2 text-lg sm:text-2xl font-bold text-gray-900 hover:text-gray-700"
             >
               <Briefcase className="w-6 h-6 sm:w-8 sm:h-8" />
@@ -18,7 +18,7 @@ const Nav = () => {
 
           <div>
             <Link
-              href="/favourites"
+              href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/favourites`}
               className="inline-flex items-center gap-2 px-3 py-2 text-sm sm:text-lg font-semibold text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
             >
               <BookmarkPlus className="w-5 h-5 sm:w-6 sm:h-6" />

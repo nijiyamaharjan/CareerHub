@@ -25,7 +25,7 @@ export default function FavoriteJobsPage() {
                     <Logo companyName={job.company} />
                   </div>
                   
-                  <Link href={`/job/${job.id}`} className="flex-grow">
+                  <Link href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/job/${job.id}`} className="flex-grow">
                     <div className="sm:w-64 ml-0 sm:ml-2 flex flex-row">
                       <div className="sm:hidden">
                         <Logo companyName={job.company} />

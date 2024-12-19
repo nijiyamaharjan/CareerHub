@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/CareerHub', // Replace with your repository name
+  basePath: process.env.NODE_ENV === 'production' ? '/CareerHub' : '',
 }
 
 export default nextConfig
