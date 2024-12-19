@@ -8,6 +8,7 @@ CareerHub is a job listings web application built with Next.js that helps users 
 - **Job Details**: View detailed information about each job, including company, location, level, time, salary range, and description.
 - **Mock Apply**: Submit a mock application for jobs.
 - **Responsive Design**: Fully responsive UI, optimized for various screen sizes.
+- **Static Site Generation (SSG)**: The application uses Next.js's Static Site Generation to pre-render job listing pages at build time for improved performance and SEO.
 
 ## Tech Stack
 
