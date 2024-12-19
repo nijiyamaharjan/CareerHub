@@ -3,7 +3,7 @@ import { Briefcase, BookmarkPlus } from 'lucide-react';
 
 const Nav = () => {
   return (
-    <nav className="sticky top-0 w-full bg-white shadow-sm border-b">
+    <nav className="w-full bg-white shadow-sm border-b">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div>
