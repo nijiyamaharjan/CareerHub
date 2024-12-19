@@ -1,5 +1,7 @@
 # CareerHub
+
 https://nijiyamaharjan.github.io/CareerHub/
+
 CareerHub is a job listings web application built with Next.js that helps users explore job opportunities. Users can view job listings, add jobs to their favorites, and mock apply to jobs. The application uses a JSON file to simulate a backend and store job data.
 
 ## Features
