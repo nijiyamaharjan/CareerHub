@@ -4,6 +4,13 @@ import { useFavorites } from "../context/FavouritesContext";
 import Tooltip from '@mui/material/Tooltip';
 import { Star } from 'lucide-react';
 
+export async function generateStaticParams() {
+  const jobs = mockJobs;
+  return jobs.map((job) => ({
+    id: job.id.toString(),
+  }));
+}
+
 export default function JobCard({ job }) {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
 
@@ -96,4 +103,14 @@ export default function JobCard({ job }) {
       </div>
     </li>
   );
+}
+
+export async function getStaticProps() {
+  const jobs = mockJobs;  
+
+  return {
+    props: {
+      initialJobs: jobs,  
+    },
+  };
 }

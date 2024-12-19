@@ -1,4 +1,13 @@
 import Feed from "./components/Feed";
+import mockJobs from "./data/mockJobs"; 
+
+export async function generateStaticParams() {
+  const paths = mockJobs.map((job) => ({
+    id: job.id.toString(),
+  }));
+
+  return paths;
+}
 
 export default function Home() {
   return (
@@ -7,3 +16,4 @@ export default function Home() {
     </section>
   );
 }
+
