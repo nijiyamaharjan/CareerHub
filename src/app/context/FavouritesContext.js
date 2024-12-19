@@ -1,15 +1,23 @@
-"use client"
-
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const FavoritesContext = createContext();
 
-export function useFavorites() {
-  return useContext(FavoritesContext);
-}
+export const useFavorites = () => useContext(FavoritesContext);
 
-export function FavoritesProvider({ children }) {
-  const [favorites, setFavorites] = useState([]);
+export const FavoritesProvider = ({ children }) => {
+  const [favorites, setFavorites] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedFavorites = localStorage.getItem('favorites');
+      return storedFavorites ? JSON.parse(storedFavorites) : [];
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+  }, [favorites]);
 
   const addFavorite = (job) => {
     setFavorites((prev) => [...prev, job]);
@@ -24,10 +32,8 @@ export function FavoritesProvider({ children }) {
   };
 
   return (
-    <FavoritesContext.Provider
-      value={{ favorites, addFavorite, removeFavorite, isFavorite }}
-    >
+    <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite, isFavorite }}>
       {children}
     </FavoritesContext.Provider>
   );
-}
+};

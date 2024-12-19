@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const AppliedJobsContext = createContext();
 
@@ -9,10 +9,25 @@ export function useAppliedJobs() {
 }
 
 export function AppliedJobsProvider({ children }) {
-  const [appliedJobs, setAppliedJobs] = useState([]);
+  const [appliedJobs, setAppliedJobs] = useState(() => {
+    if (typeof window !== "undefined") {
+      const storedAppliedJobs = localStorage.getItem("appliedJobs");
+      return storedAppliedJobs ? JSON.parse(storedAppliedJobs) : [];
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("appliedJobs", JSON.stringify(appliedJobs));
+    }
+  }, [appliedJobs]);
 
   const addAppliedJob = (job) => {
-    setAppliedJobs((prev) => [...prev, job]);
+    setAppliedJobs((prev) => {
+      const newAppliedJobs = [...prev, job];
+      return newAppliedJobs;
+    });
   };
 
   const isAppliedJob = (jobId) => {
