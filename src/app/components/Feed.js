@@ -36,13 +36,12 @@ export default function Feed() {
       filtered = filtered.filter((job) => job.level.toLowerCase() === jobLevel.toLowerCase());
     }
   
-    // Filter by job type (full-time, part-time)
     if (jobType) {
       filtered = filtered.filter((job) => job.time.toLowerCase() === jobType.toLowerCase());
     }
 
     setFilteredJobs(filtered);
-  }, [searchQuery, jobs, jobLevel, jobType]); // Re-run whenever searchQuery or jobs change
+  }, [searchQuery, jobs, jobLevel, jobType]); 
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentJobs = filteredJobs.slice(startIndex, startIndex + itemsPerPage);

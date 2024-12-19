@@ -32,7 +32,7 @@ export default function JobCard({ job }) {
             </Link>
         </div>
 
-        {/* Mobile View Tags */}
+        {/* Mobile View */}
         <div className="flex flex-col flex-wrap gap-2 mb-3 sm:hidden">
           <div className="flex gap-2">
             <span className="bg-gray-200 px-2 py-1 rounded-lg text-sm flex items-center">
@@ -47,7 +47,7 @@ export default function JobCard({ job }) {
           </span>
         </div>
 
-        {/* Desktop View Info */}
+        {/* Desktop View */}
         <div className="hidden sm:flex items-center flex-grow ">
           <p className="w-28">
             <span className="bg-gray-200 px-2 py-1 rounded-lg inline-block">
